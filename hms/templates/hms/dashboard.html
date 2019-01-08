@@ -6,6 +6,49 @@
     
 
 {% block content %}
-    
+
+<div class="container-fluid" id="wrapper">
+    <div class="row">
+
+        {% include 'hms/dashboard/dashboard_nav.html' %}
+
+        
+        <!-- Main Content -->
+        <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
+            
+            {% include 'hms/dashboard/dashboard_head.html' %}
+            
+
+            <!-- Main Section -->
+            <section class="row">
+                <div class="col-sm-12">
+
+                    <!-- Sub Section -->
+                    <section class="row">
+                        <div class="col-md-12 col-lg-12">
+
+                            <!-- Head Title -->
+                            <div class="jumbotron">
+                                <h1 class="mb-4">Hello, Jane!</h1>
+                                <p class="lead">Welcome to Graceland Hotel Management System</p>
+                            </div>
+
+                            {% include 'hms/dashboard/dashboard_display.html' %}
+                            
+                        </div>
+                    </section>
+                    <!-- //Sub Section -->
+
+                    {% include 'hms/footer.html' %}
+
+                </div>
+            </section>
+            <!-- //Main Section -->
+
+        </main>
+        <!-- //Main Content -->
+
+    </div>
+</div>
 {% endblock content %}
     

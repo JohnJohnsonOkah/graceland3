@@ -1,1 +1,30 @@
-<h1>Reservation</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Graceland Reservation</title>
+{% endblock title %}
+    
+
+{% block content %}
+<div class="container-fluid" id="wrapper">
+		<div class="row">
+            {% include 'hms/reservation/reservation_nav.html' %}
+			
+			<main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
+				{% include 'hms/reservation/reservation_head.html' %}
+				<section class="row">
+					<div class="col-sm-12">
+                        
+						{% include 'hms/reservation/reservation_display.html' %}
+						
+                        {% include 'hms/reservation/reservation_form.html' %}
+                        
+						{% include 'hms/footer.html' %}
+					</div>
+				</section>
+			</main>
+		</div>
+	</div>
+
+{% endblock content %}
+    
