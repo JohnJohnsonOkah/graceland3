@@ -20,22 +20,20 @@
                                 <th>Price</th>
                                 <th>Payment Status</th>
                                 <th>Service Remark</th>
+                                <th>User</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for eachreserve in myreserve %}
-                            <tr>
-                                <td>{{ eachreserve.date }}</td>
-                                <td>{{ eachreserve.guestname }}</td>
-                                <td>{{ eachreserve.room }}</td>
-                                <td>{{ eachreserve.price }}</td>
-                                {% if eachreserve.paymentpending %}
-                                    <td>Pending</td>
-                                {% else %}
-                                    <td>Paid</td>
-                                {% endif %}
-                                <td>{{ eachreserve.remark }}</td>
-                            </tr>
+                            {% for reservation in all_reservations %}
+                                <tr>
+                                    <td>{{ reservation.time }}</td>
+                                    <td>{{ reservation.guest }}</td>
+                                    <td>{{ reservation.room }}</td>
+                                    <td>{{ reservation.price }}</td>
+                                    <td>{{ reservation.payment_status }}</td>
+                                    <td>{{ reservation.remark }}</td>
+                                    <td>{{ reservation.user }}</td>
+                                </tr>
                             {% endfor %}
                             
                         </tbody>

@@ -1,10 +1,22 @@
 from django.shortcuts import render
+from .models import Reservation
+from .forms import ReservationForm
+
 
 def dashboard(request):
     return render(request, 'hms/dashboard.html')
 
 def reservation(request):
-    return render(request, 'hms/reservation.html')
+
+    all_reservations = Reservation.objects.all()
+
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    
+    form = ReservationForm()
+    return render(request, 'hms/reservation.html', {'form': form, 'all_reservations': all_reservations})
 
 def restandbar(request):
     return render(request, 'hms/restandbar.html')
