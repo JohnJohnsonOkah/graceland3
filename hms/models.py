@@ -22,7 +22,7 @@ class Reservation(models.Model):
 
 
     def __str__(self):
-        return 'Reservation for {}'.format(self.guest)
+        return 'Reservation for {}'.format(self.time)
     
 
     class Meta:
