@@ -5,7 +5,7 @@ class ReservationForm(forms.ModelForm):
 
     class Meta:
         model = Reservation
-        fields = ('guest', 'room', 'price', 'payment_status', 'remark')
+        exclude = ('time', 'user')
 
     def __init__(self, *args, **kwargs):
         super(ReservationForm, self).__init__(*args, **kwargs)

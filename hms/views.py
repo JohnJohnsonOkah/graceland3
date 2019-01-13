@@ -13,7 +13,9 @@ def reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            form.save()
+            reservation = form.save(commit=False)
+            reservation.user = request.user
+            reservation.save()
     
     form = ReservationForm()
     return render(request, 'hms/reservation.html', {'form': form, 'all_reservations': all_reservations})
