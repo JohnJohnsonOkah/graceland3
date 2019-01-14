@@ -27,3 +27,25 @@ class Reservation(models.Model):
 
     class Meta:
         ordering = ('-time',)
+
+
+class Restandbar(models.Model):
+    PAYMENT_CHOICES = (
+        ('paid', 'Paid'),
+        ('pending', 'Pending'),
+    )
+    time = models.DateTimeField(auto_now_add=True)
+    guest = models.CharField(max_length=100)
+    menu_item = models.CharField(max_length=100)
+    price = models.IntegerField()
+    payment_status = models.CharField(max_length=20, choices=PAYMENT_CHOICES)
+    remark = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return 'Restandbar for {}'.format(self.time)
+    
+
+    class Meta:
+        ordering = ('-time',)

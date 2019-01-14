@@ -1,0 +1,22 @@
+<section class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-block">
+                <h3 class="card-title">Add New Menu item</h3>
+                
+                <form class="form" action="." method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">{{ field.label_tag }}</label>
+                        <div class="col-md-9">
+                            {{ field }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-md btn-primary"><span class="fa fa-glass"></span> ADD ITEM</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

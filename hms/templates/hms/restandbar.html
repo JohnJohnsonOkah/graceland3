@@ -1,1 +1,31 @@
-<h1>Restuarant and Bar</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Graceland Restuarant and Bar</title>
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class="container-fluid" id="wrapper">
+	<div class="row">
+		{% include 'hms/restandbar/restandbar_nav.html' %}
+		
+		<main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
+			{% include 'hms/restandbar/restandbar_head.html' %}
+			<section class="row">
+				<div class="col-sm-12">
+					
+					{% include 'hms/restandbar/restandbar_display.html' %}
+					
+					{% include 'hms/restandbar/restandbar_form.html' %}
+					
+					{% include 'hms/footer.html' %}
+				</div>
+			</section>
+		</main>
+	</div>
+</div>
+
+{% endblock content %}
+    

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Reservation
-from .forms import ReservationForm
+from .models import Reservation, Restandbar
+from .forms import ReservationForm, RestandbarForm
 
 
 def dashboard(request):
@@ -20,8 +20,21 @@ def reservation(request):
     form = ReservationForm()
     return render(request, 'hms/reservation.html', {'form': form, 'all_reservations': all_reservations})
 
+
 def restandbar(request):
-    return render(request, 'hms/restandbar.html')
+
+    all_restandbars = Restandbar.objects.all()
+
+    if request.method == 'POST':
+        form = RestandbarForm(request.POST)
+        if form.is_valid():
+            restandbar = form.save(commit=False)
+            restandbar.user = request.user
+            restandbar.save()
+    
+    form = RestandbarForm()
+    return render(request, 'hms/restandbar.html', {'form': form, 'all_restandbars': all_restandbars})
+
 
 def inventory(request):
     return render(request, 'hms/inventory.html')
