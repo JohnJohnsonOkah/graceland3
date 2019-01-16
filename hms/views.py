@@ -4,12 +4,31 @@ from .forms import ReservationForm, RestandbarForm
 
 
 def dashboard(request):
-    return render(request, 'hms/dashboard.html')
+
+    # reservation profit
+    reservation_profit = 0
+    for entry in Reservation.objects.all():
+        if entry.is_reservation_today():
+            reservation_profit += entry.price
+    # restandbar profit
+    restandbar_profit = 0
+    for entry in Restandbar.objects.all():
+        if entry.is_restandbar_today():
+            restandbar_profit += entry.price
+    # total profit
+    hotel_profit = reservation_profit + restandbar_profit
+
+    context = {
+        'hotel_profit': hotel_profit
+    }
+
+    return render(request, 'hms/dashboard.html', context)
 
 def reservation(request):
 
     all_reservations = Reservation.objects.all()
 
+    # auto add user to form
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():

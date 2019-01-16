@@ -1,5 +1,8 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 class Reservation(models.Model):
@@ -24,6 +27,8 @@ class Reservation(models.Model):
     def __str__(self):
         return 'Reservation for {}'.format(self.time)
     
+    def is_reservation_today(self):
+        return self.time >= timezone.now() - datetime.timedelta(days=1)
 
     class Meta:
         ordering = ('-time',)
@@ -45,6 +50,9 @@ class Restandbar(models.Model):
 
     def __str__(self):
         return 'Restandbar for {}'.format(self.time)
+
+    def is_restandbar_today(self):
+        return self.time >= timezone.now() - datetime.timedelta(days=1)
     
 
     class Meta:
