@@ -18,8 +18,12 @@ def dashboard(request):
     # total profit
     hotel_profit = reservation_profit + restandbar_profit
 
+    # total entries
+    total_sales = Reservation.objects.all().count() + Restandbar.objects.all().count()
+
     context = {
-        'hotel_profit': hotel_profit
+        'hotel_profit': hotel_profit,
+        'total_sales': total_sales
     }
 
     return render(request, 'hms/dashboard.html', context)
