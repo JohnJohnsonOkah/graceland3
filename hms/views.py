@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .models import Reservation, Restandbar
 from .forms import ReservationForm, RestandbarForm
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def dashboard(request):
 
     # reservation profit
