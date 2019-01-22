@@ -7,9 +7,14 @@ from django.utils import timezone
 
 class Reservation(models.Model):
     ROOM_CHOICES = (
-        ('single', 'Single'),
-        ('double', 'Double'),
-        ('family', 'Family'),
+        ('comfort 1', 'Comfort 1'),
+        ('comfort 2', 'Comfort 2'),
+        ('comfort 3', 'Comfort 3'),
+        ('standard', 'Standard'),
+        ('superior', 'Superior'),
+        ('standard superior', 'Standard Superior '),
+        ('classic superior', 'Classic Superior'),
+        ('executives suites', 'Executives Suites'),
     )
     PAYMENT_CHOICES = (
         ('paid', 'Paid'),
