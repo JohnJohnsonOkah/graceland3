@@ -30,6 +30,8 @@ def dashboard(request):
 
     return render(request, 'hms/dashboard.html', context)
 
+
+@login_required
 def reservation(request):
 
     all_reservations = Reservation.objects.all()
@@ -46,6 +48,7 @@ def reservation(request):
     return render(request, 'hms/reservation.html', {'form': form, 'all_reservations': all_reservations})
 
 
+@login_required
 def restandbar(request):
 
     all_restandbars = Restandbar.objects.all()
@@ -61,8 +64,10 @@ def restandbar(request):
     return render(request, 'hms/restandbar.html', {'form': form, 'all_restandbars': all_restandbars})
 
 
+@login_required
 def inventory(request):
     return render(request, 'hms/inventory.html')
 
+@login_required
 def room(request):
     return render(request, 'hms/room.html')
