@@ -8,11 +8,11 @@
 
     <h1>Login Page</h1>
     {% if form.errors %}
-    <p>There's something wrong with what you entered!</p>
+    <p style="color: #ff0000;">Invalid password or username.</p>
     {% endif %}
 
     {% if next %}
-    <p>Hey, you can't access that page.</p>
+    <i>Enter your login details</i>
     {% endif %}
 
     <form method="post" action="{% url 'login' %}">
