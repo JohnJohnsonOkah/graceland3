@@ -11,6 +11,6 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'inventory' %}"><em class="fa fa-shopping-cart"></em> Inventory</a></li>
         <li class="nav-item mt-5"><a class="nav-link" href="{% url 'dashboard' %}"><em class="fa fa-home"></em> Room</a></li>
     </ul>
-    <a href="login.html" class="logo"><img src="{% static '/images/logo.png' %}" alt="logo"></a>
-    <a href="login.html" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
+    <a href="" class="logo"><img src="{% static '/images/logo.png' %}" alt="logo"></a>
+    <a href="{% url "logout" %}" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
 </nav>
