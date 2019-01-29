@@ -36,6 +36,14 @@ def reservation(request):
 
     all_reservations = Reservation.objects.all()
 
+    # reduce the number of objects to display
+    list_num = 5
+    if all_reservations.count() >= list_num:
+        few_reservations = []
+        for i in range(list_num):
+            few_reservations.append(all_reservations[i])
+        all_reservations = few_reservations
+
     # auto add user to form
     if request.method == 'POST':
         form = ReservationForm(request.POST)
@@ -53,13 +61,22 @@ def restandbar(request):
 
     all_restandbars = Restandbar.objects.all()
 
+    # reduce the number of objects to display
+    list_num = 5
+    if all_restandbars.count() >= list_num:
+        few_restandbars = []
+        for i in range(list_num):
+            few_restandbars.append(all_restandbars[i])
+        all_restandbars = few_restandbars
+
+    # auto add user to form
     if request.method == 'POST':
         form = RestandbarForm(request.POST)
         if form.is_valid():
             restandbar = form.save(commit=False)
             restandbar.user = request.user
             restandbar.save()
-    
+
     form = RestandbarForm()
     return render(request, 'hms/restandbar.html', {'form': form, 'all_restandbars': all_restandbars})
 
@@ -67,6 +84,7 @@ def restandbar(request):
 @login_required
 def inventory(request):
     return render(request, 'hms/inventory.html')
+
 
 @login_required
 def room(request):
