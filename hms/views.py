@@ -7,25 +7,31 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def dashboard(request):
 
-    # reservation profit
+    # reservation profit for the day
+    reservation_entries = 0
     reservation_profit = 0
     for entry in Reservation.objects.all():
         if entry.is_reservation_today():
             reservation_profit += entry.price
-    # restandbar profit
+            reservation_entries += 1
+
+    # restandbar profit for the day
+    restandbar_entries = 0
     restandbar_profit = 0
     for entry in Restandbar.objects.all():
         if entry.is_restandbar_today():
             restandbar_profit += entry.price
+            restandbar_entries += 1
+
     # total profit
     hotel_profit = reservation_profit + restandbar_profit
 
     # total entries
-    total_sales = Reservation.objects.all().count() + Restandbar.objects.all().count()
+    total_sales = reservation_entries + restandbar_entries
 
     context = {
         'hotel_profit': hotel_profit,
-        'total_sales': total_sales
+        'total_sales': total_sales,
     }
 
     return render(request, 'hms/dashboard.html', context)
