@@ -32,6 +32,7 @@ def dashboard(request):
     context = {
         'hotel_profit': hotel_profit,
         'total_sales': total_sales,
+        'section': 'dashboard',
     }
 
     return render(request, 'hms/dashboard.html', context)
@@ -59,7 +60,14 @@ def reservation(request):
             reservation.save()
     
     form = ReservationForm()
-    return render(request, 'hms/reservation.html', {'form': form, 'all_reservations': all_reservations})
+
+    context = {
+        'section': 'reservation',
+        'form': form,
+        'all_reservations': all_reservations,
+    }
+
+    return render(request, 'hms/reservation.html', context)
 
 
 @login_required
@@ -84,12 +92,21 @@ def restandbar(request):
             restandbar.save()
 
     form = RestandbarForm()
-    return render(request, 'hms/restandbar.html', {'form': form, 'all_restandbars': all_restandbars})
+
+    context = {
+        'section': 'restandbar',
+        'form': form,
+        'all_restandbars': all_restandbars,
+    }
+    return render(request, 'hms/restandbar.html', context)
 
 
 @login_required
 def inventory(request):
-    return render(request, 'hms/inventory.html')
+    context = {
+        'section': 'inventory'
+    }
+    return render(request, 'hms/inventory.html', context)
 
 
 @login_required

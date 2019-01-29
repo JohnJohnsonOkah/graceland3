@@ -17,6 +17,46 @@
 </head>
 <body>
 
+    <!-- Side Bar -->
+    {% load staticfiles %}
+    <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2">
+        <h1 class="site-title"><a href="{% url 'dashboard' %}"><em class="fa fa-home"></em> Graceland</a></h1>
+
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
+        <ul class="nav nav-pills flex-column sidebar-nav">
+
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a {% if section == "dashboard" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{% url 'dashboard' %}">
+                        <em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a {% if section == "reservation" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{% url 'reservation' %}">
+                        <em class="fa fa-edit"></em> Reservation
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a {% if section == "restandbar" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{% url 'restandbar' %}">
+                        <em class="fa fa-glass"></em> Restaurant & Bar
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a {% if section == "inventory" %} class="nav-link active"{% else %} class="nav-link" {% endif %} href="{% url 'inventory' %}">
+                        <em class="fa fa-shopping-cart"></em> Inventory
+                    </a>
+                </li>
+                <li class="nav-item mt-5">
+                    <a class="nav-link" href=""><em class="fa fa-home"></em> Room</a>
+                </li>
+            {% endif %}
+
+        </ul>
+        <a href="" class="logo"><img src="{% static "images/logo.png" %}" alt="logo"></a>
+        <a href="{% url "logout" %}" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
+    </nav>
+    <!-- //Side Bar -->
+
     {% block content %}
         
     {% endblock content %}
@@ -34,18 +74,6 @@
     <script src="{% static 'js/easypiechart-data.js' %}"></script>
     <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
-    <script>
-	    var startCharts = function () {
-	                var chart1 = document.getElementById("line-chart").getContext("2d");
-	                window.myLine = new Chart(chart1).Line(lineChartData, {
-	                responsive: true,
-	                scaleLineColor: "rgba(0,0,0,.2)",
-	                scaleGridLineColor: "rgba(0,0,0,.05)",
-	                scaleFontColor: "#c5c7cc "
-	                });
-	            }; 
-	        window.setTimeout(startCharts(), 1000);
-	</script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 </body>
