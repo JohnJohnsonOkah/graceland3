@@ -6,23 +6,35 @@
 
 {% block content %}
 
-    <h1>Login Page</h1>
-    {% if form.errors %}
-    <p style="color: #ff0000;">Invalid password or username.</p>
-    {% endif %}
+    <div class="container-fluid" id="wrapper">
+    <div class="row">
 
-    {% if next %}
-    <i>Enter your login details</i>
-    {% endif %}
+        <!-- Main Content -->
+        <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
 
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
+            <h1>Login Page</h1>
+            {% if form.errors %}
+            <p style="color: #ff0000;">Invalid password or username.</p>
+            {% endif %}
 
-        <p>Username: {{ form.username }}</p>
-        <p>Password: {{ form.password }}</p>
+            {% if next %}
+            <i>Enter your login details</i>
+            {% endif %}
 
-        <p><input type="submit" value="Login"></p>
-        <input type="hidden" name="next" value="{{ next }}">
-    </form>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+
+                <p>Username: {{ form.username }}</p>
+                <p>Password: {{ form.password }}</p>
+
+                <p><input type="submit" value="Login"></p>
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+
+        </main>
+        <!-- //Main Content -->
+
+    </div>
+</div>
 
 {% endblock %}

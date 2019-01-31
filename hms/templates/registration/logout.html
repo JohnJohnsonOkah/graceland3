@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Logout page</title>
+    <title>Logout Page</title>
 {% endblock %}
 
 {% block content %}
-    <h1>Graceland Hotel MS</h1>
 
-    <p>You are now logged out! <a href="{% url 'login' %}">Login</a> again</p>
+    <div class="container-fluid" id="wrapper">
+    <div class="row">
+
+        <!-- Main Content -->
+        <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
+
+            <h1>Logged Out</h1>
+            <p>You are now logged out! <a href="{% url 'login' %}">Login again</a></p>
+
+        </main>
+        <!-- //Main Content -->
+
+    </div>
+</div>
 
 {% endblock %}
