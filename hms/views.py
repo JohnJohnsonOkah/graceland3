@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Reservation, Restandbar
 from .forms import ReservationForm, RestandbarForm
 from django.contrib.auth.decorators import login_required
@@ -44,21 +44,22 @@ def reservation(request):
     all_reservations = Reservation.objects.all()
 
     # reduce the number of objects to display
-    list_num = 5
+    list_num = 7
     if all_reservations.count() >= list_num:
         few_reservations = []
         for i in range(list_num):
             few_reservations.append(all_reservations[i])
         all_reservations = few_reservations
 
-    # auto add user to form
+    # collect input from form and auto add user to the form
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.user = request.user
             reservation.save()
-    
+            return redirect('reservation')
+
     form = ReservationForm()
 
     context = {
@@ -76,20 +77,21 @@ def restandbar(request):
     all_restandbars = Restandbar.objects.all()
 
     # reduce the number of objects to display
-    list_num = 5
+    list_num = 7
     if all_restandbars.count() >= list_num:
         few_restandbars = []
         for i in range(list_num):
             few_restandbars.append(all_restandbars[i])
         all_restandbars = few_restandbars
 
-    # auto add user to form
+    # collect input from form and auto add user to the form
     if request.method == 'POST':
         form = RestandbarForm(request.POST)
         if form.is_valid():
             restandbar = form.save(commit=False)
             restandbar.user = request.user
             restandbar.save()
+            return redirect('restandbar')
 
     form = RestandbarForm()
 
