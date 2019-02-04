@@ -28,7 +28,6 @@ class Reservation(models.Model):
     remark = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-
     def __str__(self):
         return 'Reservation for {}'.format(self.time)
     
@@ -52,13 +51,11 @@ class Restandbar(models.Model):
     remark = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-
     def __str__(self):
         return 'Restandbar for {}'.format(self.time)
 
     def is_restandbar_today(self):
         return self.time >= timezone.now() - datetime.timedelta(days=1)
-    
 
     class Meta:
         ordering = ('-time',)
