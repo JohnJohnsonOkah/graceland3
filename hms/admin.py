@@ -7,6 +7,7 @@ class ReservationAdmin(admin.ModelAdmin):
     list_filter = ('time', 'user')
     search_fields = ('guest',)
 
+
 admin.site.register(Reservation, ReservationAdmin)
 
 
@@ -15,4 +16,10 @@ class RestandbarAdmin(admin.ModelAdmin):
     list_filter = ('time', 'user')
     search_fields = ('guest',)
 
+
 admin.site.register(Restandbar, RestandbarAdmin)
+
+
+admin.site.site_header = "Graceland Admin"
+admin.site.site_title = "Graceland Admin Portal"
+admin.site.index_title = "Welcome to Graceland Admin Portal"
