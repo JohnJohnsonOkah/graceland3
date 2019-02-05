@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}
     <title>Logout Page</title>
@@ -14,6 +15,8 @@
 
             <h1>Logged Out</h1>
             <p>You are now logged out! <a href="{% url 'login' %}">Login again</a></p>
+
+            <img src="{% static "images/room2.JPG" %}" width="50%" height="350">
 
         </main>
         <!-- //Main Content -->
