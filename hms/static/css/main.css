@@ -9,3 +9,9 @@
       display: none; 
     }
 }
+
+.log-image {
+    box-shadow: 0 5px 5px 0 #adb5bd;
+    border-radius: 10%;
+    width: 70%;
+}
