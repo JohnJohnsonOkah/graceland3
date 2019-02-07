@@ -25,7 +25,7 @@ SECRET_KEY = 'a8*@88yy9!1p=jjgm$$22rb3lv5&rcakg!7#f9gje(fs+yd6yq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['684aad31.ngrok.io', '127.0.0.1']
+ALLOWED_HOSTS = ['graceland.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -119,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/graceland/graceland3/static/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
