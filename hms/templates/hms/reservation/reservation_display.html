@@ -24,7 +24,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for reservation in all_reservations %}
+                            {% for reservation in latest_reservations %}
                                 <tr>
                                     <td>{{ reservation.time }}</td>
                                     <td>{{ reservation.guest }}</td>

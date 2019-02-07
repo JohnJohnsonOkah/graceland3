@@ -41,15 +41,7 @@ def dashboard(request):
 @login_required
 def reservation(request):
 
-    all_reservations = Reservation.objects.all()
-
-    # reduce the number of objects to display
-    list_num = 7
-    if all_reservations.count() >= list_num:
-        few_reservations = []
-        for i in range(list_num):
-            few_reservations.append(all_reservations[i])
-        all_reservations = few_reservations
+    latest_reservations = Reservation.objects.all()[:5]
 
     # collect input from form and auto add user to the form
     if request.method == 'POST':
@@ -65,7 +57,7 @@ def reservation(request):
     context = {
         'section': 'reservation',
         'form': form,
-        'all_reservations': all_reservations,
+        'latest_reservations': latest_reservations,
     }
 
     return render(request, 'hms/reservation.html', context)
@@ -74,15 +66,7 @@ def reservation(request):
 @login_required
 def restandbar(request):
 
-    all_restandbars = Restandbar.objects.all()
-
-    # reduce the number of objects to display
-    list_num = 7
-    if all_restandbars.count() >= list_num:
-        few_restandbars = []
-        for i in range(list_num):
-            few_restandbars.append(all_restandbars[i])
-        all_restandbars = few_restandbars
+    latest_restandbar = Restandbar.objects.all()[:5]
 
     # collect input from form and auto add user to the form
     if request.method == 'POST':
@@ -98,7 +82,7 @@ def restandbar(request):
     context = {
         'section': 'restandbar',
         'form': form,
-        'all_restandbars': all_restandbars,
+        'latest_restandbars': latest_restandbar,
     }
     return render(request, 'hms/restandbar.html', context)
 
